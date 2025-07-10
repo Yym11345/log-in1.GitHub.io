@@ -7,6 +7,17 @@
    ): Promise<SearchResult> {
      if (!supabase) {
 -      throw new Error('Supabase not configured');
+      console.log('Using mock data - Supabase not configured');
+      return [
+        { enzyme_type: '蛋白酶', count: 2876 },
+        { enzyme_type: '果胶酶', count: 2145 },
+        { enzyme_type: '淀粉酶', count: 1534 },
+        { enzyme_type: '脂肪酶', count: 1321 },
+        { enzyme_type: '纤维素酶', count: 1256 },
+        { enzyme_type: '木质素酶', count: 744 },
+      ];
+      console.log('Using mock data - Supabase not configured');
+      return null;
 +      // 返回模拟数据用于演示
 +      console.log('Using mock data - Supabase not configured');
 +      const mockGenes: Gene[] = [
@@ -37,14 +48,14 @@
 +          completeness: 'complete' as const,
 +          created_at: new Date().toISOString(),
 +          updated_at: new Date().toISOString(),
-+        },
++        }
 +      ];
-+      
-+      return {
-+        genes:      m
-   }ockGenes,
-+        total: mockGenes.length,
-+        page,
-+        pageSize,
-+      };
-     }
+      
+      return {
+        genes: mockGenes,
+        total: mockGenes.length,
+        page,
+        pageSize,
+      };
+    }
+}
