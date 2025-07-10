@@ -2,6 +2,10 @@
 async getUserProfile(userId: string): Promise<UserProfile | null> {
   if (!supabase) {
     throw new Error('Supabase not configured');
+    console.log('Supabase not configured - cannot clear search history');
+    return;
+    console.log('Using mock data - Supabase not configured');
+    return [];
     console.log('Supabase not configured - search history not saved');
     return {
       id: 'mock-id',
