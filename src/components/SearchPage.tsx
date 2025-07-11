@@ -260,8 +260,8 @@ const SearchPage: React.FC = () => {
             className="w-full p-3 bg-white border border-blue-200 rounded-lg text-blue-700 font-mono focus:outline-none focus:ring-2 focus:ring-blue-400/50"
           >
             <option value="">全部状态</option>
-            <option value="reviewed">已审核</option>
-            <option value="unreviewed">未审核</option>
+            <option value="reviewed">已审查</option>
+            <option value="unreviewed">未审查</option>
           </select>
         </div>
 
