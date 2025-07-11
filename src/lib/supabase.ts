@@ -2,8 +2,18 @@ import { createClient } from '@supabase/supabase-js';
 import type { SupabaseClient, User } from '@supabase/supabase-js';
 
 // 从环境变量获取配置
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://xdzqbxpqqdzwqbvgkwjh.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkenFieHBxcWR6d3Fidmdrd2poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDcxMjIzNTAsImV4cCI6MjAyMjY5ODM1MH0.kw5_RtF1h3KNz_HzX4M149DuO0-xW6BNxmgI1LoQYXY';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// 检查必需的环境变量
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('❌ Supabase 配置缺失');
+  console.error('请确保在 .env 文件中设置了以下环境变量:');
+  console.error('- VITE_SUPABASE_URL');
+  console.error('- VITE_SUPABASE_ANON_KEY');
+  console.error('参考 README.md 中的配置说明');
+  throw new Error('Supabase 环境变量未配置。请检查 .env 文件并重启开发服务器。');
+}
 
 interface AuthResponse {
   data: any;
