@@ -1,4 +1,5 @@
 # 烟叶酶基因资源管理平台
+[访问网站](https://courageous-crepe-effd19.netlify.app)
 
 专业的烟叶酶基因数据库和分析平台，收录9,876条非冗余基因序列。
 
