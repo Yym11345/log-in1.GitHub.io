@@ -37,11 +37,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     // 获取初始会话
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+    supabase.auth.getSession()
+      .then(({ data: { session } }) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      })
+      .catch(async (error) => {
+        console.error('Session recovery error:', error);
+        // Check if the error is related to invalid refresh token
+        if (error.message && error.message.includes('Invalid Refresh Token')) {
+          // Clear the invalid session from local storage
+          await supabase.auth.signOut();
+          setSession(null);
+          setUser(null);
+        }
+        setLoading(false);
+      });
 
     // 监听认证状态变化
     const {
