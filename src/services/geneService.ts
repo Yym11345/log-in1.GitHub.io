@@ -152,8 +152,8 @@ export const geneService = {
       console.log(`获取字段 ${column} 的唯一值`);
       const { data, error } = await supabase
         .from('geness')
-        .select(`"${column}"`)
-        .not(`"${column}"`, 'is', null);
+        .select(column)
+        .not(column, 'is', null);
 
       if (error) {
         console.error(`获取字段 ${column} 唯一值失败:`, error);
